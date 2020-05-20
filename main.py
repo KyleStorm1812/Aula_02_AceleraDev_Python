@@ -14,17 +14,19 @@ class Department:
         self.code = code
 
 
-class Employee:
+class Employee(ABC):
     def __init__(self, code, name, salary):
         self.code = code
         self.name = name
         self.salary = salary
+        self.goal = True
+        self.workload = 8
 
-    workload = 8
-
+    @abstractmethod
     def calc_bonus(self):
         pass
 
+    @abstractmethod
     def get_hours(self):
         pass
 
@@ -32,21 +34,41 @@ class Employee:
 class Manager(Employee):
     def __init__(self, code, name, salary):
         super().__init__(code, name, salary)
-        self.departament = Department('managers', 1)
+        self._departament = Department('managers', 1)
 
     def calc_bonus(self):
-        return self.salary * 0.15
+        if self.goal:
+            return [self.salary * 0.15, self.salary * 1.15]
 
+    def get_departament(self):
+        return [self._departament.name, self._departament.code]
 
-class Seller(Manager):
-    def __init__(self, code, name, salary):
-        super().__init__(code, name, salary)
-        self.departament = Department('sellers', 2)
-        self.sales = 0
+    def set_departament(self, new_departament):
+        self._departament.name = new_departament
 
     def get_hours(self):
-        return 6
+        return self.workload
 
 
-dep = Department('Tecnologia', 10)
-print(dep.code)
+class Seller(Employee):
+    def __init__(self, code, name, salary):
+        super().__init__(code, name, salary)
+        self._departament = Department('sellers', 2)
+        self._sales = 0
+
+    def calc_bonus(self):
+        return [self.get_sales() * 0.15, self.get_sales() * 1.15]
+    def get_hours(self):
+        return self.workload
+
+    def get_departament(self):
+        return [self._departament.name, self._departament.code]
+
+    def get_sales(self):
+        return self._sales
+
+    def put_sales(self, new_sale):
+        self._sales += new_sale
+
+j = Manager(10, "Leandro", 4000)
+print(j.get_departament())
