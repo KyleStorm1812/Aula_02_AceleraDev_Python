@@ -4,8 +4,7 @@ Abstract classes cannot be instantiated, and require subclasses to provide imple
 Source:https://www.python-course.eu/python3_abstract_classes.php
 """
 
-from abc import ABC
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 
 class Department:
@@ -26,9 +25,8 @@ class Employee(ABC):
     def calc_bonus(self):
         pass
 
-    @abstractmethod
     def get_hours(self):
-        pass
+        return self.workload
 
 
 class Manager(Employee):
@@ -46,9 +44,6 @@ class Manager(Employee):
     def set_departament(self, new_departament):
         self._departament.name = new_departament
 
-    def get_hours(self):
-        return self.workload
-
 
 class Seller(Employee):
     def __init__(self, code, name, salary):
@@ -58,9 +53,6 @@ class Seller(Employee):
 
     def calc_bonus(self):
         return self.get_sales() * 0.15
-
-    def get_hours(self):
-        return self.workload
 
     def get_departament(self):
         return self._departament.name
@@ -73,5 +65,3 @@ class Seller(Employee):
 
     def put_sales(self, new_sale):
         self._sales += new_sale
-
-
