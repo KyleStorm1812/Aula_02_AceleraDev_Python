@@ -70,5 +70,4 @@ class Seller(Employee):
     def put_sales(self, new_sale):
         self._sales += new_sale
 
-j = Manager(10, "Leandro", 4000)
-print(j.get_departament())
+
