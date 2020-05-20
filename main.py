@@ -38,7 +38,7 @@ class Manager(Employee):
 
     def calc_bonus(self):
         if self.goal:
-            return [self.salary * 0.15, self.salary * 1.15]
+            return self.salary * 0.15
 
     def get_departament(self):
         return self._departament.name
