@@ -41,7 +41,7 @@ class Manager(Employee):
             return [self.salary * 0.15, self.salary * 1.15]
 
     def get_departament(self):
-        return [self._departament.name, self._departament.code]
+        return self._departament.name
 
     def set_departament(self, new_departament):
         self._departament.name = new_departament
@@ -57,12 +57,16 @@ class Seller(Employee):
         self._sales = 0
 
     def calc_bonus(self):
-        return [self.get_sales() * 0.15, self.get_sales() * 1.15]
+        return self.get_sales() * 0.15
+
     def get_hours(self):
         return self.workload
 
     def get_departament(self):
-        return [self._departament.name, self._departament.code]
+        return self._departament.name
+
+    def set_departament(self, new_departament):
+        self._departament.name = new_departament
 
     def get_sales(self):
         return self._sales

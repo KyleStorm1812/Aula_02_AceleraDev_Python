@@ -1,6 +1,3 @@
 {
-  "test_submit.py::TestChalange2::()::test_calc_bonus_manger": true,
-  "test_submit.py::TestChalange2::()::test_calc_bonus_seller": true,
-  "test_submit.py::TestChalange2::()::test_get_department_manager": true,
-  "test_submit.py::TestChalange2::()::test_get_department_seller": true
+  "test_submit.py::TestChalange2::()::test_calc_bonus_manger": true
 }
