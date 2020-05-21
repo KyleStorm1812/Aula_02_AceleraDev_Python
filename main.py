@@ -41,9 +41,9 @@ class Manager(Employee):
     def get_departament(self):
         return self._departament.name
 
-    def set_departament(self, new_departament):
+    def set_departament(self, new_departament, new_code):
         self._departament.name = new_departament
-
+        self._departament.code = new_code
 
 class Seller(Employee):
     def __init__(self, code, name, salary):
@@ -57,8 +57,9 @@ class Seller(Employee):
     def get_departament(self):
         return self._departament.name
 
-    def set_departament(self, new_departament):
+    def set_departament(self, new_departament, new_code):
         self._departament.name = new_departament
+        self._departament.code = new_code
 
     def get_sales(self):
         return self._sales
